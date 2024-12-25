@@ -9,14 +9,14 @@ class Solution {
             else if (original == 1 && n % 2 == 0 || n % original == 0)
                 numbers.add(n);
         }
-        if (!numbers.isEmpty())
-            original = find(numbers, original);
+        if (!numbers.isEmpty()) {
+            while (true) {
+                if (!numbers.contains(original))
+                    break;
+                original *= 2;
+            }
+            numbers.clear();
+        }
         return original;
-    }
-
-    private int find(ArrayList<Integer> numbers, int original) {
-        if (!numbers.contains(original))
-            return original;
-        return find(numbers, original * 2);
     }
 }
